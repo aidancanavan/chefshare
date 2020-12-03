@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<script>
+	var k = true;
+	var dropdown;
+	function activate(){
+	
+	var i = document.getElementById("settings-menu");
+		if(k){
+		i.style.filter = "invert(100%)";
+		k=!k;
+		document.getElementById("profile-title-box").appendChild(dropdown.cloneNode(true));
+		
+		}
+		else{
+		i.style.filter = "invert(0%)";
+		k=!k;
+		document.getElementsByClassName("dropdown")[0].remove();
+		}
+		
+	}
+</script>
+
+</head>
+
+<body>
+	
+	<div id="profile-title-box">
+		<b id="username-title">my_username123</b>
+		
+		<div class="profile-item" id="following" >Followers: 453</div>
+		<div class="profile-item" id="followers" >Following: 456</div>
+		
+		<nav><img id="settings-menu" onClick="activate()" src="images/gear.png"></nav>
+		<div class="dropdown"><a href="login.html"> Log Out</a></div>
+	
+	</div>
+	
+	
+	<div class="feed">
+		<div class="userpost">
+			<img class="foodpic" src="images/newpost.webp">
+			<ul>
+			<li>
+			
+			<div class="like-number">Make</div>
+			</li>
+			<li>
+			
+			<div class="like-number">New</div>
+			</li>
+			<li>
+			
+			<div class="like-number">Post</div>
+			</li>
+			<li id="settings">
+			<img class="likepic" src="images/proceed.png">
+			
+			</li>
+			
+			</ul>
+		</div>
+		<div class="userpost">
+			<img class="foodpic" src="images/food1.jpg">
+			<ul>
+			<li>
+			<img class="likepic" src="images/star.png">
+			<div class="like-number">11</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/comment.png">
+			<div class="like-number">6</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/cook.png">
+			<div class="like-number">5</div>
+			</li>
+			<li id="settings">
+			<img class="likepic" src="images/gear.png">
+			
+			</li>
+			
+			</ul>
+		</div>
+		<div class="userpost">
+			<img class="foodpic" src="images/food2.jpg">
+			<ul>
+			<li>
+			<img class="likepic" src="images/star.png">
+			<div class="like-number">54</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/comment.png">
+			<div class="like-number">3</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/cook.png">
+			<div class="like-number">3</div>
+			</li>
+			<li id="settings">
+			<img class="likepic" src="images/gear.png">
+			
+			</li>
+			
+			</ul>
+		</div>
+		<div class="userpost">
+			<img class="foodpic" src="images/food3.jpg">
+			<ul>
+			<li>
+			<img class="likepic" src="images/star.png">
+			<div class="like-number">27</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/comment.png">
+			<div class="like-number">6</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/cook.png">
+			<div class="like-number">3</div>
+			</li>
+			<li id="settings">
+			<img class="likepic" src="images/gear.png">
+			
+			</li>
+			
+			</ul>
+		</div>
+		<div class="userpost">
+			<img class="foodpic" src="images/food4.jpg">
+			<ul>
+			<li>
+			<img class="likepic" src="images/star.png">
+			<div class="like-number">11</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/comment.png">
+			<div class="like-number">4</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/cook.png">
+			<div class="like-number">8</div>
+			</li>
+			<li id="settings">
+			<img class="likepic" src="images/gear.png">
+			
+			</li>
+			
+			</ul>
+		</div>
+		<div class="userpost">
+			<img class="foodpic" src="images/pudding.jpg">
+			<ul>
+			<li>
+			<img class="likepic" src="images/star.png">
+			<div class="like-number">84</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/comment.png">
+			<div class="like-number">3</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/cook.png">
+			<div class="like-number">5</div>
+			</li>
+			<li id="settings">
+			<img class="likepic" src="images/gear.png">
+			
+			</li>
+			
+			</ul>
+		</div>
+		<div class="userpost">
+			<img class="foodpic" src="images/soup.jpg">
+			<ul>
+			<li>
+			<img class="likepic" src="images/star.png">
+			<div class="like-number">10</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/comment.png">
+			<div class="like-number">60</div>
+			</li>
+			<li>
+			<img class="likepic" src="images/cook.png">
+			<div class="like-number">5</div>
+			</li>
+			<li id="settings">
+			<img class="likepic" src="images/gear.png">
+			
+			</li>
+			
+			</ul>
+		</div>
+		
+	</div>
+	
+	<div class="lowermenu">
+	
+	<ul class="optionbar2">
+    <li ><a href="feed.html"><span>My Feed</span></a></li>
+    <li><a href="explore.html"><span>Explore</span></a></li>
+    <li class="active"><a href="profile.html" ><span>Profile</span></a></li>
+    <li ><a href="notifications.html"><img id="notification" src="images/bell.png"></a></li>
+	
+	</ul>
+	</div>
+	<script>
+	dropdown = document.getElementsByClassName("dropdown")[0].cloneNode("true");
+	document.getElementsByClassName("dropdown")[0].remove();
+	</script>
+
+</body>
+
+</html>

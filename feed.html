@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+
+<script>
+	var p = 0;
+	let values = new Array();
+	
+	let likes = [];
+	
+	function deleteInfo(){
+		var info = document.getElementsByClassName("info");
+		var i;
+		var infoLen = info.length;
+		for(i=infoLen;i>0;i--){
+			info[i-1].remove();
+		}
+		
+	}
+	
+	function addSpacer(){
+	var d = document.getElementsByClassName("post");
+	var x = document.createElement("div");
+	x.style.width = "100vw";
+	x.style.height = "8vw";
+	d[d.length -1].after(x);
+	}
+	
+	function doLike(x){
+		
+		var i;
+		var j;
+		var found = false;
+		
+		if(likes.length ==0 && x !=-1){
+			likes[0]=([x,true]);
+			
+		}
+		else if(x != -1){
+			for(i=0;i<likes.length;i++){
+				if(likes[i][0] == x){
+				found = true;
+					likes[i][1] = !likes[i][1];
+				}
+				
+					
+			}
+			if (!found){
+				likes.push([x,true]);
+			}
+		}
+		//update part below
+		var likeList = document.getElementsByClassName("like");
+		if(likes[0] != undefined){
+		
+		for(i=0;i<likeList.length;i++){
+			//console.log(likes[parseInt(likeList[i].id)][1]);
+			for(j=0;j<likes.length;j++){
+				if(likeList[i].id == likes[j][0]){
+					if(likes[j][1]==true){
+						likeList[i].style.filter = "sepia(0%)";
+						likeList[i].style.boxShadow = "2px 2px 3px inset black";
+					}
+					else{
+						likeList[i].style.filter = "sepia(100%)";
+						likeList[i].style.boxShadow = "2px 2px 5px #ab9a73";
+					}
+				}
+			}
+			
+		}
+		}
+		
+		
+		
+	
+	}
+	
+	
+	
+	
+	function clickType(type){
+		
+		
+		//below switches active tabs
+		var all = document.getElementsByClassName("menu");
+		var j;
+		for(j=0; j<all.length;j++){
+			if (all[j].classList.contains('active')){
+			
+				all[j].classList.remove('active');
+			}
+		}
+		document.getElementById(type).classList.add("active");
+		
+		//remove all posts and child nodes
+		var node = document.getElementById("feed");
+		while(node.hasChildNodes()){
+			node.removeChild(node.firstChild);
+		}
+		
+		
+		//below adds posts to the page
+		
+		var len = ke.length;
+		var p;
+		for(p=0;p<len;p++){
+			if(type=="all"){
+				feedNew.append(ke[p].cloneNode(true));
+			
+			}
+			else if(ke[p].classList.contains(type)){
+				feedNew.append(ke[p].cloneNode(true));
+			}
+		}
+		doLike(-1);
+		
+		deleteInfo();
+		addSpacer();
+	}
+</script>
+</head>
+
+<body>
+	
+	
+	
+	
+	<ul class="optionbar">
+	
+    <li id="all" class="menu" onclick="clickType('all')"><a >All</a></li>
+    <li id="lunch" class="menu" onclick="clickType('lunch')"><a >Lunch</a></li>
+    <li id="dinner" class="menu" onclick="clickType('dinner')"><a  >Dinner</a></li>
+    <li id="dessert" class="menu" onclick="clickType('dessert')"><a >Dessert</a></li>
+	<li id="other" class="menu" onclick="clickType('other')"><a >Other</a></li>
+	</ul>
+	
+	<div class="feed" id="feed">
+	
+	
+	
+	
+	<div class="post lunch">
+		<img class="post-image" src="images/soup.jpg" alt="chocolate pie">
+		<img class="profile-image" src="images/profile.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">edward_jacobson42</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="0"  onclick="doLike(0)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<div class="post dessert">
+		<img class="post-image" src="images/pie.jpg" alt="chocolate pie">
+		<img class="profile-image" src="images/profile1.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">howardstoffer4321</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="1"  onclick="doLike(1)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<div class="post lunch dinner other">
+		<img class="post-image" src="images/carrots.png" alt="chocolate pie">
+		<img class="profile-image" src="images/profile2.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">adonis_killian1</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="2"  onclick="doLike(2)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<div class="post dinner lunch">
+		<img class="post-image" src="images/bread.jpg" alt="chocolate pie">
+		<img class="profile-image" src="images/profile3.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">lena_scott222</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="3"  onclick="doLike(3)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<div class="post dessert">
+		<img class="post-image" src="images/pudding.jpg" alt="chocolate pie">
+		<img class="profile-image" src="images/profile4.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">jeff__65432</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="4"  onclick="doLike(4)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<div class="post dinner">
+		<img class="post-image" src="images/meal.jpg" alt="chocolate pie">
+		<img class="profile-image" src="images/profile5.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">eldridge_cousins21</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="5"  onclick="doLike(5)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<div class="post dinner">
+		<img class="post-image" src="images/food1.jpg" alt="chocolate pie">
+		<img class="profile-image" src="images/profile6.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">mia_malita345</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="6"  onclick="doLike(6)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<div class="post dinner">
+		<img class="post-image" src="images/food2.jpg" alt="chocolate pie">
+		<img class="profile-image" src="images/profile7.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">es21_678_43</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="7"  onclick="doLike(7)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<div class="post dinner">
+		<img class="post-image" src="images/food3.jpg" alt="chocolate pie">
+		<img class="profile-image" src="images/profile8.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">annie45</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="8"  onclick="doLike(8)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<div class="post dessert">
+		<img class="post-image" src="images/food4.jpg" alt="chocolate pie">
+		<img class="profile-image" src="images/profile9.jpg" alt="profile picture">
+		<div class="username-box"><a class="username" href="?">samuelsmith5</a></div>
+	
+		<div class="content">
+			 <p>This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. This is info on the post and it talks about the post. </p>
+		</div>
+		
+		<div class="post-menu">
+			<input class="comment-box" name="comment" placeholder="Enter Comment" type="text">
+			<input type="image" id="9"  onclick="doLike(9)" class="like" src="images/star.png">
+			<input type="image" id="info" class="info" src="images/info.png">
+		</div>
+	</div>
+	<p id="space-below"></p>
+	</div>
+	
+	<div class="lowermenu">
+	
+	<ul class="optionbar2">
+    <li class="active"><a href="feed.html"><span>My Feed</span></a></li>
+    <li><a href="explore.html"><span>Explore</span></a></li>
+    <li ><a href="profile.html" ><span>Profile</span></a></li>
+    <li><a href="notifications.html"><img id="notification" src="images/bell.png"></a></li>
+	
+	</ul>
+	</div>
+<script>
+var posts = document.getElementsByClassName("post");
+var k = posts[0].cloneNode(true);
+let ke = new Array();
+
+//ke.push(k);
+var y;
+var feedNew = document.getElementById("feed");
+var len = posts.length;
+for(y=0;y<len;y++){
+	ke.push(posts[y]);
+	//feedNew.appendChild(posts[y]);
+}
+
+for(y=0;y<len;y++){
+	feedNew.appendChild(posts[y].cloneNode(true));
+	//feedNew.appendChild(posts[y]);
+}
+for(y=0;y<2*len;y++){
+	
+	
+	
+	document.getElementsByClassName("post")[0].remove();
+}
+//feedNew.appendChild(ke[3]);
+
+
+
+document.getElementById("all").click();
+
+
+</script>
+</body>
+
+</html>
